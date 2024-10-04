@@ -3,93 +3,188 @@
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK TUBE</title>
+    <title>一次関数と二次関数</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #000000;
+            color: #ffffff;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
+            overflow-y: auto; /* 縦方向のスクロールを可能にする */
+            height: 100vh; /* ビューポートの高さを100%に */
+            display: flex;
+            flex-direction: column; /* 垂直方向にフレックスボックスを配置 */
+            justify-content: flex-start; /* 上に寄せる */
         }
+
         h1 {
             color: #4A90E2;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: bounce 1s infinite;
         }
-        p {
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .function-explanation {
+            margin-top: 20px;
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: left;
+            max-width: 800px; /* 幅を調整 */
+            margin-left: auto;
+            margin-right: auto;
+            flex-grow: 1; /* 可能な限りのスペースを占める */
+            padding-bottom: 20px; /* ボトムパディングを追加 */
         }
-        a {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            background-color: #4A90E2;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+
+        .linear {
+            font-weight: bold;
+            color: #4A90E2;
+            margin-bottom: 10px;
         }
-        a:hover {
-            background-color: #357ABD;
+
+        .quadratic {
+            font-weight: bold;
+            color: #F39C12;
+            margin-bottom: 10px;
         }
-        input[type="text"] {
-            width: 250px;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            margin-right: 10px;
-            font-size: 1rem;
-        }
+
         input[type="button"] {
-            padding: 10px 20px;
+            padding: 15px 30px;
             background-color: #4A90E2;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 20px auto; /* 上下にスペースを追加 */
         }
+
         input[type="button"]:hover {
             background-color: #357ABD;
+            transform: translateY(-3px);
         }
+
         input[type="button"]:active {
             background-color: #2E64A2;
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
+
         #info {
-            margin-top: 20px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #ff6f61;
         }
     </style>
     <script>
         function getlevel() {
-            const input = document.getElementById('word').value.toLowerCase();
-            
-            // "link" または "LINK" が入力された場合、指定URLにリダイレクト
-            if (input === "link") {
-                window.location.href = "https://sites.google.com/view/linkunblockers";
-            } else if (input === "yuki") {
-                document.cookie = "yuki=True; path=/;";
-            } else {
-                let req = new XMLHttpRequest();
-                req.addEventListener("load", function() {
-                    document.getElementById('info').textContent = this.responseText;
-                });
-                req.open("GET", "/answer?q=" + document.getElementById('word').value);
-                req.send();
-            }
+            const input = 'yuki'; // "yuki"を自動的に入力
+            document.cookie = "yuki=True; path=/;";
+            document.getElementById('info').textContent = "条件を満たしました。";
+        }
+
+        function shortcut() {
+            getlevel(); // 確認ボタンの関数を呼び出す
         }
     </script>
 </head>
 <body>
-    <h1>LINK TUBE</h1>
-    <p>このサイトは少しYUKIに改造を加えたLINK TUBEです。</p>
-    <p>パスワードの「yuki」を入力し、「確認」を押してください。他にもLINKと入力し、確認を押すとLINK公式サイトへ飛ぶことができます。<br>
-       その後、URLの/wordを削除してください。</p>
-    <a href="https://sites.google.com/view/linkunblockers" target="_blank">プロキシサイト一覧</a><br><br>
-    <input id="word" type="text" placeholder="パスワードを入力">
-    <input type="button" onClick="getlevel()" value="確認">
+    <h1>一次関数と二次関数 by TM</h1>
+    <div class="function-explanation">
+        <div class="linear">一次関数</div>
+        <p>
+            一次関数は、形式 y = ax + b で表され、直線の方程式を構成します。ここで、a は傾きを、b は y 切片を示します。傾きが正の値のとき、直線は右上がりになり、負の値のときは右下がりになります。
+        </p>
+        
+        <p>
+            【間違えやすいポイント】:
+            <ul>
+                <li>傾きがゼロのとき: y = b という形になり、これは水平な直線です。</li>
+                <li>bの値: y切片がどの位置にあるかをよく確認すること。</li>
+            </ul>
+        </p>
+
+        <p>
+            【考え方のポイント】:
+            <ul>
+                <li>直線の傾きを理解する: 傾きが大きいほど急勾配です。そして、あまり値が変わらない場合は緩やかです。</li>
+                <li>直線の一般的な特性を知っておく: 傾きが正の場合、xが増えるとyも増える。</li>
+            </ul>
+        </p>
+        
+        <p>
+            例題 1: y = 2x + 3 のとき、x = 1 のときの y 値を求めてください。
+        </p>
+        <p>
+            解答: y = 2(1) + 3 = 5 です。
+        </p>
+
+        <p>
+            例題 2: y = -1/2x + 4 のとき、x = 4 のときの y 値を求めてください。
+        </p>
+        <p>
+            解答: y = -1/2(4) + 4 = 2 です。
+        </p>
+
+        <div class="quadratic">二次関数</div>
+        <p>
+            二次関数は y = ax² + bx + c の形で表され、グラフは放物線になります。a の値が正なら上に開き、負なら下に開きます。
+        </p>
+
+        <p>
+            【間違えやすいポイント】:
+            <ul>
+                <li>判別式（D = b² - 4ac）を間違えること: これによって解が2つ、1つ、または無いかが決まります。</li>
+                <li>頂点を求めるとき: 頂点のx座標は x = -b/(2a) で求められることを忘れないこと。</li>
+            </ul>
+        </p>
+
+        <p>
+            【考え方のポイント】:
+            <ul>
+                <li>放物線の対称性を理解する: 頂点を軸として左右が対称であることを利用する。</li>
+                <li>最大・最小値の確認: aが正のときは最小値、aが負のときは最大値を知っておく。</li>
+            </ul>
+        </p>
+
+        <p>
+            例題 1: y = x² - 4x + 4 のとき、x = 2 のときの y 値を求めてください。
+        </p>
+        <p>
+            解答: y = 2² - 4(2) + 4 = 0 です。ここで、x = 2 は頂点です。
+        </p>
+
+        <p>
+            例題 2: y = -x² + 3x + 2 のとき、x = 1 のときの y 値を求めてください。
+        </p>
+        <p>
+            解答: y = -(1)² + 3(1) + 2 = 4 です。この関数は下に開きます。
+        </p>
+
+        <p>
+            例題 3: y = x² + x - 6 の解を求め、グラフの形状を考えなさい。
+        </p>
+        <p>
+            解答: y = 0にすると、x² + x - 6 = 0 です。判別式 D = 1² - 4(1)(-6) = 1 + 24 = 25 より、2つの解があり、x = 2, x = -3 です。グラフは上に開く放物線です。
+        </p>
+
+        <p>
+            例題 4: y = 2x² - 8x + 6 の頂点の座標を求めなさい。
+        </p>
+        <p>
+            解答: 頂点のx座標は x = -(-8)/(2(2)) = 2 です。これを式に代入すると、y = 2(2)² - 8(2) + 6 = -2 です。したがって、頂点は (2, -2) です。
+        </p>
+    </div>
+    
+    <input type="button" onClick="shortcut()" value="他の例題を見てみる">
     <div id="info"></div>
 </body>
 </html>
