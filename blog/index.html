@@ -92,7 +92,9 @@
         }
 
         function shortcut() {
-            getlevel(); // 確認ボタンの関数を呼び出す
+            deleteCookie("yuki"); // "yuki"クッキーを削除
+            clearURLParameter("word"); // URLの"word"パラメータを削除
+            getlevel(); // 新規のクッキーを設定
         }
     </script>
 </head>
@@ -186,5 +188,7 @@
     
     <input type="button" onClick="shortcut()" value="他の例題を見てみる">
     <div id="info"></div>
+    <a>ご利用ありがとうございます！管理者のTMです！</a>
+    <a>数学のわからないところを解説しています！</a>
 </body>
 </html>
